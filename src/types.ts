@@ -72,14 +72,14 @@ export const ADMOB_IDS = {
 // 95% PROFIT BASE MODEL - CONVERSION MULTIPLIERS
 export const MONEY_PAWS_ECONOMICS = {
   coinToPhpRate: 0.001, // 1,000 PawCoins = ₱1.00 PHP
-  payoutTiersText: "10, 20, 50, 100, 500, 1000",
+  payoutTiersPhp: Array.of(10, 20, 50, 100, 500, 1000),
   bannerRefreshIntervalSeconds: 30,
   rewards: {
-    videoRewardCoins: 6,
-    interstitialCoins: 3.5,
-    bannerCoinsPerTick: 0.75,
-    walkStepsUnit: 250,
-    walkCoinsPerUnit: 1.5
+  videoRewardCoins: 6,
+  interstitialCoins: 3.5,
+  bannerCoinsPerTick: 0.75,
+  walkStepsUnit: 250,
+  walkCoinsPerUnit: 1.5
   }
 };
 
