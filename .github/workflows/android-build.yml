@@ -13,20 +13,20 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js Environment
-        uses: actions/setup-node@v4
+      - name: Set up Bun Environment
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
+          bun-version: latest
 
       - name: Install Web Dependencies
-        run: npm install --legacy-peer-deps --no-package-lock
+        run: bun install --no-save
 
       - name: Compile Production Web Asset
-        run: npm run build
+        run: bun run build
 
       - name: Inject Native Android Container
         run: |
-          npm install @capacitor/core @capacitor/cli @capacitor/android --legacy-peer-deps
+          bun add @capacitor/core @capacitor/cli @capacitor/android
           npx cap integrity-check || true
           npx cap add android --no-sync || true
 
@@ -34,7 +34,7 @@ jobs:
         run: |
           curl -L -o icon.png "https://unsplash.com"
           curl -L -o splash.png "https://unsplash.com"
-          npm install -g @capacitor/assets
+          bun add -g @capacitor/assets
           npx capacitor-assets generate --android || true
 
       - name: Set up Java Development Kit (JDK)
