@@ -17,10 +17,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install Web Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Compile Production Web Asset
         run: npm run build
@@ -33,11 +32,8 @@ jobs:
 
       - name: Fetch and Configure Custom Cat Branding
         run: |
-          # Automatically downloads matching orange/black theme base assets for your icon & splash screens
           curl -L -o icon.png "https://unsplash.com"
           curl -L -o splash.png "https://unsplash.com"
-          
-          # Install asset compiler and generate app visual layouts
           npm install -g @capacitor/assets
           npx capacitor-assets generate --android || true
 
