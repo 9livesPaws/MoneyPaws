@@ -86,6 +86,7 @@ export const ADMOB_IDS = {
 export const MONEY_PAWS_ECONOMICS = {
   coinToPhpRate: 0.001,             // 1,000 PawCoins = ₱1.00 PHP
   payoutTiersPhp:,
+  bannerRefreshIntervalSeconds: 30, // Optimized 30s auto-refresh banner strategy
   rewards: {
     videoRewardCoins: 6,            // Video split payout: ₱0.006 (User 5% share)
     interstitialCoins: 3.5,         // Interstitial split payout: ₱0.0035
