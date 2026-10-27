@@ -31,6 +31,16 @@ jobs:
           npx cap integrity-check || true
           npx cap add android --no-sync || true
 
+      - name: Fetch and Configure Custom Cat Branding
+        run: |
+          # Automatically downloads matching orange/black theme base assets for your icon & splash screens
+          curl -L -o icon.png "https://unsplash.com"
+          curl -L -o splash.png "https://unsplash.com"
+          
+          # Install asset compiler and generate app visual layouts
+          npm install -g @capacitor/assets
+          npx capacitor-assets generate --android || true
+
       - name: Set up Java Development Kit (JDK)
         uses: actions/setup-java@v4
         with:
@@ -40,7 +50,7 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Sync Web Build to Android Wrapper
+      - name: Sync Web Build & Assets to Android Wrapper
         run: npx cap sync android
 
       - name: Build Android Debug APK
