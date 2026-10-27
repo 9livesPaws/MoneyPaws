@@ -10,20 +10,7 @@ export interface PersonalGoal {
 export interface Transaction {
   id: string;
   type: 
-    | 'MINE_TAP' 
-    | 'WALK' 
-    | 'DAILY_LOGIN' 
-    | 'GAME_FRUIT' 
-    | 'GAME_SPIN' 
-    | 'GAME_SCRATCH' 
-    | 'WATCH_AD' 
-    | 'REFERRAL' 
-    | 'WITHDRAWAL' 
-    | 'DAILY_MISSION' 
-    | 'LUCKY_CHEST' 
-    | 'TRIVIA' 
-    | 'HABIT_GOAL' 
-    | 'ACHIEVEMENT';
+    | 'MINE_TAP' | 'WALK' | 'DAILY_LOGIN' | 'GAME_FRUIT' | 'GAME_SPIN' | 'GAME_SCRATCH' | 'WATCH_AD' | 'REFERRAL' | 'WITHDRAWAL' | 'DAILY_MISSION' | 'LUCKY_CHEST' | 'TRIVIA' | 'HABIT_GOAL' | 'ACHIEVEMENT';
   amountPhp: number;
   title: string;
   timestamp: number;
@@ -84,16 +71,15 @@ export const ADMOB_IDS = {
 
 // 95% PROFIT BASE MODEL - CONVERSION MULTIPLIERS
 export const MONEY_PAWS_ECONOMICS = {
-  coinToPhpRate: 0.001,             // 1,000 PawCoins = ₱1.00 PHP
-  
-  payoutTiersPhp:,
-  bannerRefreshIntervalSeconds: 30, // Optimized 30s auto-refresh banner strategy
+  coinToPhpRate: 0.001, // 1,000 PawCoins = ₱1.00 PHP
+  payoutTiersText: "10, 20, 50, 100, 500, 1000",
+  bannerRefreshIntervalSeconds: 30,
   rewards: {
-    videoRewardCoins: 6,            // Video split payout: ₱0.006 (User 5% share)
-    interstitialCoins: 3.5,         // Interstitial split payout: ₱0.0035
-    bannerCoinsPerTick: 0.75,       // Banner view split payout: ₱0.00075
-    walkStepsUnit: 250,             // Step unit block
-    walkCoinsPerUnit: 1.5           // Conversion value per step block
+    videoRewardCoins: 6,
+    interstitialCoins: 3.5,
+    bannerCoinsPerTick: 0.75,
+    walkStepsUnit: 250,
+    walkCoinsPerUnit: 1.5
   }
 };
 
