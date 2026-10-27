@@ -74,7 +74,7 @@ export interface UserState {
   userEmail: string;
 }
 
-// ADMOB LIVE NETWORK IDs (Tailored from Dashboard Images)
+// ADMOB LIVE NETWORK IDs
 export const ADMOB_IDS = {
   publisherId: "pub-6655685917040449",
   bannerId: "ca-app-pub-6655685917040449/1985937373",
