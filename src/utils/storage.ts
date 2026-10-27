@@ -1,4 +1,4 @@
-import { UserState, Transaction } from '../types';
+import { UserState, Transaction, MONEY_PAWS_ECONOMICS } from '../types';
 
 const STORAGE_KEY = 'moneypaws_app_state_v2';
 
@@ -18,12 +18,12 @@ const INITIAL_TRANSACTIONS: Transaction[] = [
     title: 'Day 1 Daily Login Reward',
     timestamp: Date.now() - 1000 * 60 * 60 * 3,
     status: 'COMPLETED',
-  },
+  }
 ];
 
 export const DEFAULT_USER_STATE: UserState = {
-  balancePhp: 0.65, // Exactly matching screenshot "₱0.65"
-  targetThresholdPhp: 5.50, // Matches screenshot "Next Target Threshold: P.65/ 5.500"
+  balancePhp: 0.65, 
+  targetThresholdPhp: 10.00, // Locks entry bar cleanly onto the first real ₱10.00 Tier threshold
   totalEarnedPhp: 0.65,
   tapMineCount: 14,
   stepsToday: 1240,
@@ -48,7 +48,7 @@ export const DEFAULT_USER_STATE: UserState = {
   batterySaver: false,
   personalGoals: [
     { id: 'goal-1', title: 'Drink 8 glasses of water', icon: '💧', rewardPaws: 50, completed: false, streakDays: 4 },
-    { id: 'goal-2', title: 'Take a 10-min brisk walk', icon: '👟', rewardPaws: 50, completed: true, streakDays: 7 },
+    { id: 'goal-2', title: 'Take a 10-min brisk walk', icon: '🚶', rewardPaws: 50, completed: true, streakDays: 7 },
     { id: 'goal-3', title: 'Track daily budget & savings', icon: '📊', rewardPaws: 50, completed: false, streakDays: 3 },
   ],
   triviaAnsweredDate: '',
@@ -83,7 +83,6 @@ export function saveUserState(state: UserState): void {
 }
 
 export function formatPhp(amount: number): string {
-  // Format matching the screenshot style: ₱0.65
   return `₱${amount.toFixed(2)}`;
 }
 
@@ -92,8 +91,6 @@ export function formatPaws(paws: number): string {
 }
 
 export function formatUsd(paws: number): string {
-  const usd = paws / 1000;
+  const usd = paws * MONEY_PAWS_ECONOMICS.coinToPhpRate * 0.020; // Sets global dollar conversion metric tracking safely
   return `$${usd.toFixed(2)}`;
 }
-
-
