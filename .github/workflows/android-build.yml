@@ -19,14 +19,14 @@ jobs:
           node-version: 20
 
       - name: Install Web Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps --no-package-lock
 
       - name: Compile Production Web Asset
         run: npm run build
 
       - name: Inject Native Android Container
         run: |
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npm install @capacitor/core @capacitor/cli @capacitor/android --legacy-peer-deps
           npx cap integrity-check || true
           npx cap add android --no-sync || true
 
